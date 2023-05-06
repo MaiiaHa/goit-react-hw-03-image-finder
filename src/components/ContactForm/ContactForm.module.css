@@ -1,0 +1,31 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.input {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.inputName {
+  width: 60px;
+  font-weight: 600;
+}
+.inputField {
+  border-color: #3888cf;
+  padding: 4px;
+}
+.inputBtn {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4px;
+  background-color: #65a1d6;
+  border-color: #3888cf;
+  border-radius: 4px;
+  color: white;
+}

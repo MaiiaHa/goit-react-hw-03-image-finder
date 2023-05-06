@@ -1,0 +1,17 @@
+.section {
+  width: 500px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: #3888cf;
+  background-color: #ffdba1;
+
+  border: 1px solid #3888cf;
+  box-shadow: 0 4px 4px #c9984b;
+}
+.sectionTitle {
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+}
