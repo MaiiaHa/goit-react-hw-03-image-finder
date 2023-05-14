@@ -16,8 +16,13 @@ export default class ImageGalleryItem extends Component {
     // console.dir(this.props);
     // console.log(this.props.tags);
     return (
-      <li className={css.galleryItem} key={id}>
-        <img src={webformatURL} alt={tags} onClick={this.toggleModal} />
+      <li className={css.ImageGalleryItem} key={id}>
+        <img
+          className={css.ImageGalleryItemImage}
+          src={webformatURL}
+          alt={tags}
+          onClick={this.toggleModal}
+        />
         {showModal && <Modal src={largeImageURL} onClose={this.toggleModal} />}
       </li>
     );

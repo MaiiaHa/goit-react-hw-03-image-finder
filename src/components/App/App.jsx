@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
+import Notiflix from 'notiflix'; // all modules
+import { fetchInput } from '../../api/Api';
+import css from './App.module.css';
+import { ImSpinner } from 'react-icons/im';
+
 import Button from '../Button/Button';
-// import Modal from '../Modal/Modal';
 import Searchbar from '../Searchbar/Searchbar';
 import ImageGallery from '../ImageGallery/ImageGallery';
-// import { ToastContainer } from 'react-toastify';
-import { fetchInput } from '../../api/Api';
-// import Notiflix from 'notiflix'; // all modules
-import { ImSpinner } from 'react-icons/im';
-import Notiflix from 'notiflix';
-import css from './App.module.css';
 import { Loader } from 'components/Loader/Loader';
-// import { nanoid } from 'nanoid';
+// import { ToastContainer } from 'react-toastify';
 
 const Status = {
   IDLE: 'idle',
@@ -27,8 +25,6 @@ export default class App extends Component {
     pictures: [],
     error: null,
     totalHits: null,
-    // showModal: false,
-    // loading: false,
   };
 
   async componentDidUpdate(prevProps, prevState, snapshot) {
@@ -38,9 +34,11 @@ export default class App extends Component {
 
     const prevInput = prevState.value;
     const nextInput = this.state.value;
+    const prevPage = prevState.currentPage;
+    const nextPage = this.state.currentPage;
 
-    if (prevInput !== nextInput) {
-      console.log('update contacts');
+    if (prevInput !== nextInput || prevPage !== nextPage) {
+      // console.log('update contacts');
       this.setState({ status: Status.PENDING });
       //loading: true,  pictures: null
 
@@ -58,29 +56,8 @@ export default class App extends Component {
         Notiflix.Notify.failure(error.message);
       }
     }
-
-    //   fetch(
-    //     `${URL}/?q=cat&page=1&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12
-    //   `
-    //   )
-    //     .then(res => {
-    //       if (res.ok) {
-    //         return res.json();
-    //       }
-    //       return Promise.reject(new Error(`We have not ${nextInput}`));
-    //     })
-    //     .then(({ hits }) => this.setState({ hits, status: 'resolved' }))
-    //     .catch(error => this.setState({ error, status: 'rejected' }));
-    //   // .finally(() => {
-    //   //   this.setState({ loading: false });
-    //   // });
-
-    //   // localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    // }
-    // console.log(prevState); //попередній
-    // console.log(this.state); //фактичний, оновлений
-    // this.setState() не варто визивати, зациклить рендер, сетстейт, дідапдейт
   }
+
   onFormSubmit = value => {
     // записуємо інпут в стейт APP з Searchbar formSubmit
     if (this.state.value !== value) {
@@ -96,48 +73,26 @@ export default class App extends Component {
   };
 
   render() {
-    const { error, status } = this.state; // showModal,
+    const { error, status, pictures, totalHits } = this.state; // showModal,
 
     return (
       <div className={css.App}>
         <Searchbar onSubmit={this.onFormSubmit} />
         {status === Status.IDLE && <div>Please enter your search request</div>}
         {status === Status.PENDING && (
-          <div>
-            <ImSpinner size={32} className="iconSpin" />
-            Loading...
+          <div className={css.spinner}>
+            {/* <ImSpinner size={32} className="iconSpin" />  */}
+            {/* Loading... */}
             <Loader />
           </div>
         )}
         {status === Status.REJECTED && <div>{error.message}</div>}
-        {/* {this.state.pictures && (
-          <div>Here will be pics{this.state.hits.webformatURL}</div>
-        )} */}
         <ImageGallery photos={this.state.pictures} />
         {status === Status.RESOLVED &&
-          this.state.pictures.length !== this.state.totalHits &&
-          this.state.pictures.length !== 0 && (
-            // <Button onLoadMore={this.renderMorePic} aria-label="Load more" />
+          pictures.length !== totalHits &&
+          pictures.length !== 0 && (
             <Button aria-label="Load more" onClick={this.renderMorePic} />
           )}
-
-        {/* ------------------ modal ------------------ */}
-        {/* <button type="button" onClick={this.toggleModal}>
-          Open modal
-        </button> */}
-        {/* {showModal && (
-          <Modal onClose={this.toggleModal}>
-            <h2>Lorem ipsum dolor sit.</h2>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Doloremque, nihil!
-            </p>
-            <button type="button" onClick={this.toggleModal}>
-              close modal
-            </button>
-          </Modal>
-        )} */}
-        {/* ------------------ modal ------------------ */}
         {/* <ToastContainer autoClose={3000} /> */}
       </div>
     );

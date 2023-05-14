@@ -19,14 +19,10 @@ export async function fetchInput(searchInput, currentPage) {
   };
   try {
     const { data } = await axios.get(URL, options);
-    // console.log(response); //{data: {…}, status: 200, statusText: '', headers: AxiosHeaders, config: {…}, …}
+    // console.log(response); // const response = {data: {…}, status: 200, statusText: '', headers: AxiosHeaders, config: {…}, …}
     // console.log(data); //{total: 19498, totalHits: 500, hits: Array(12)}
     return data;
   } catch (error) {
     console.error(error.message);
   }
 }
-
-// id - унікальний ідентифікатор
-// webformatURL - посилання на маленьке зображення для списку карток
-// largeImageURL - посилання на велике зображення для модального вікна

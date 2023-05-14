@@ -22,6 +22,3 @@ ImageGallery.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.object),
 };
 
-// id - унікальний ідентифікатор
-// webformatURL - посилання на маленьке зображення для списку карток
-// largeImageURL - посилання на велике зображення для модального вікна
