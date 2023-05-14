@@ -35,8 +35,8 @@ export default class Modal extends Component {
     // console.dir(this.props);
 
     return createPortal(
-      <div className={css.overlay} onClick={this.hendleBackdrobClose}>
-        <div className={css.modal}>
+      <div className={css.Overlay} onClick={this.hendleBackdrobClose}>
+        <div className={css.Modal}>
           {/* {this.props.children} */}
           {/* APP includes data for modal */}
           <img src={src} alt={alt} />
