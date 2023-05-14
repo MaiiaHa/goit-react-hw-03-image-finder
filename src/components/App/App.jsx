@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Notiflix from 'notiflix'; // all modules
 import { fetchInput } from '../../api/Api';
 import css from './App.module.css';
-import { ImSpinner } from 'react-icons/im';
+// import { ImSpinner } from 'react-icons/im';
 
 import Button from '../Button/Button';
 import Searchbar from '../Searchbar/Searchbar';
