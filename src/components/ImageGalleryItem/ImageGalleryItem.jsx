@@ -12,11 +12,10 @@ export default class ImageGalleryItem extends Component {
 
   render() {
     const { showModal } = this.state;
-    const { id, tags, webformatURL, largeImageURL } = this.props;
-    // console.dir(this.props);
-    // console.log(this.props.tags);
+    const { tags, webformatURL, largeImageURL } = this.props;
+
     return (
-      <li className={css.ImageGalleryItem} key={id}>
+      <li className={css.ImageGalleryItem}>
         <img
           className={css.ImageGalleryItemImage}
           src={webformatURL}
@@ -28,9 +27,9 @@ export default class ImageGalleryItem extends Component {
     );
   }
 }
-//ALT = TAGS INCL IN PROPS
+
 ImageGalleryItem.propTypes = {
-  // tags: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
   webformatURL: PropTypes.string.isRequired,
   largeImageURL: PropTypes.string.isRequired,
 };

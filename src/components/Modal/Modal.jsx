@@ -32,7 +32,6 @@ export default class Modal extends Component {
 
   render() {
     const { src, alt } = this.props;
-    // console.dir(this.props);
 
     return createPortal(
       <div className={css.Overlay} onClick={this.hendleBackdrobClose}>

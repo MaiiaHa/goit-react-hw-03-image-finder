@@ -33,14 +33,10 @@ export default class App extends Component {
     // console.log('did update componentDidUpdate');
 
     const prevInput = prevState.value;
-    const nextInput = this.state.value;
     const prevPage = prevState.currentPage;
-    const nextPage = this.state.currentPage;
 
-    if (prevInput !== nextInput || prevPage !== nextPage) {
-      // console.log('update contacts');
+    if (prevInput !== value || prevPage !== currentPage) {
       this.setState({ status: Status.PENDING });
-      //loading: true,  pictures: null
 
       try {
         const { hits, totalHits } = await fetchInput(value, currentPage);
